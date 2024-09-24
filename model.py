@@ -12,3 +12,7 @@ def predict_future(model, future_days=10):
     last_day = len(model.coef_)  # Get last known data point
     future = np.array(range(last_day, last_day + future_days)).reshape(-1, 1)
     return model.predict(future)
+
+if __name__ == "__main__":
+    # You could include some test code here if desired
+    pass
