@@ -1,0 +1,6 @@
+numpy
+pandas
+yfinance  # or any API of choice
+scikit-learn
+flask     # For the web interface
+plotly    # For plotting the real-time graphs
