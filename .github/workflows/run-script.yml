@@ -1,33 +1,27 @@
-name: Run Trading Bot
+name: Python application
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Check out the code
+      uses: actions/checkout@v2
 
-      # Set up Python environment
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'  # Use the Python version you need
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'  # Specify the Python version you want to use
 
-      # Install dependencies (e.g., numpy, yfinance)
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install numpy yfinance pandas scikit-learn
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      # Run your Python script
-      - name: Run script
-        run: |
-          python main.py  # Replace with the actual script name
+    - name: Run Tests
+      run: |
+        # Add your testing commands here
+        python -m unittest discover -s tests  # Example command for running tests
