@@ -9,3 +9,7 @@ def get_real_time_price(ticker='AAPL'):
     stock = yf.Ticker(ticker)
     price = stock.history(period='1d')['Close'].iloc[-1]
     return price
+
+if __name__ == "__main__":
+    # Example usage if running this file directly
+    print(get_historical_data())
